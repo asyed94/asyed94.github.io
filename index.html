@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ａａｍｉｒ　Ｓｙｅｄ ／／ サイバー空間</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+         * ==============================================
+         * CSS Variables (Custom Properties)
+         * Inspired by rainy nights & neon lights...
+         * ==============================================
+         */
+        :root {
+            /* --- Color Palette: Neon Noir --- */
+            --color-background-dark: #1a202c;
+            /* Like tears in rain... */
+            --color-page-bg: #2d3748;
+            /* Off-world colony concrete */
+            --color-text-light: #e2e8f0;
+            /* Glitching terminal text */
+            --color-text-medium: #cbd5e0;
+            --color-text-muted: #a0aec0;
+            --color-accent-blue: #63b3ed;
+            /* C-Beams glittering */
+            --color-accent-pink: #f687b3;
+            /* Tannhäuser Gate glow */
+            --color-hover-border: #ffffff;
+            /* Pure energy */
+            --color-hover-bg-tint: rgba(99, 179, 237, 0.1);
+            /* Faint hologram */
+            --color-hover-text: #a3d5f7;
+
+            /* --- Typography --- */
+            --font-primary: 'Inter', sans-serif;
+            /* Standard issue font */
+            --font-monospace: 'Monospace', monospace;
+            /* System Online / Console Font */
+
+            /* --- Layout --- */
+            --page-max-width: 900px;
+            --text-column-width: 40%;
+            --image-column-width: 60%;
+            --button-max-width: 300px;
+            --standard-padding: 2rem;
+            --mobile-padding: 1rem;
+            --standard-gap: 1rem;
+            --mobile-gap: 0.75rem;
+        }
+
+        /*
+         * ==============================================
+         * Base Styles & Body
+         * Setting the atmosphere...
+         * ==============================================
+         */
+        body {
+            font-family: var(--font-primary);
+            background-color: var(--color-background-dark);
+            color: var(--color-text-light);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /*
+         * ==============================================
+         * Layout: Magazine Page Container
+         * The main structure, holding the columns.
+         * ==============================================
+         */
+        .magazine-page {
+            position: relative;
+            width: 100%;
+            max-width: var(--page-max-width);
+            max-height: 1165px;
+            /* Specific height constraint */
+            min-height: 100vh;
+            background-color: var(--color-page-bg);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.5);
+            /* Standard shadow */
+            display: flex;
+            flex-direction: row;
+            /* Side-by-side columns on large screens */
+            align-items: stretch;
+            /* Make columns equal height */
+            padding: 0;
+            /* Padding applied to inner containers */
+            box-sizing: border-box;
+        }
+
+        /*
+         * ==============================================
+         * Layout: Image Column
+         * Visuals on the right.
+         * ==============================================
+         */
+        .image-container {
+            flex-grow: 1;
+            /* Takes remaining space */
+            width: var(--image-column-width);
+            overflow: hidden;
+            /* Clip the image */
+            z-index: 1;
+            /* Behind text if overlap occurs */
+        }
+
+        .image-container img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Cover the container, cropping as needed */
+            border-radius: 0;
+            /* Sharp edges for desktop */
+        }
+
+        /*
+         * ==============================================
+         * Layout: Text Column
+         * Content on the left.
+         * ==============================================
+         */
+        .text-container {
+            position: relative;
+            z-index: 2;
+            /* Above image */
+            text-align: left;
+            width: var(--text-column-width);
+            flex-shrink: 0;
+            /* Prevent shrinking */
+            padding: var(--standard-padding);
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /* Vertically center content */
+        }
+
+        /*
+         * ==============================================
+         * Typography Styles
+         * Headlines, text, links...
+         * ==============================================
+         */
+        .headline {
+            font-size: 2.5rem;
+            font-weight: 700;
+            /* Bold */
+            margin-bottom: 0.5rem;
+            color: var(--color-accent-blue);
+            text-shadow: 0 0 5px var(--color-accent-blue);
+            /* Subtle glow */
+        }
+
+        .sub-headline {
+            font-size: 1.2rem;
+            color: var(--color-text-medium);
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info {
+            font-size: 1rem;
+            color: var(--color-text-muted);
+            margin-bottom: var(--standard-padding);
+            /* Consistent spacing */
+        }
+
+        .contact-info a {
+            color: var(--color-text-muted);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--color-text-muted);
+        }
+
+        .contact-info a:hover {
+            color: var(--color-text-light);
+            border-bottom-color: var(--color-text-light);
+        }
+
+        /* Optional Separator Style (Currently commented out in HTML) */
+        .vaporwave-separator {
+            font-family: var(--font-monospace);
+            text-align: center;
+            width: 100%;
+            margin: var(--standard-padding) 0;
+            color: var(--color-accent-pink);
+            font-size: 1rem;
+            letter-spacing: 0.1em;
+            position: relative;
+        }
+
+        /*
+         * ==============================================
+         * Components: Buttons
+         * Interactive elements. Engage!
+         * ==============================================
+         */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            gap: var(--standard-gap);
+            width: 100%;
+            align-items: flex-start;
+            /* Left-aligned */
+            padding-bottom: 0px;
+            /* Reset default padding */
+            margin-bottom: 32px;
+            /* Specific margin */
+        }
+
+        .retro-button {
+            font-family: var(--font-monospace);
+            background-color: transparent;
+            color: var(--color-accent-blue);
+            border: none;
+            border-left: 2px solid var(--color-accent-pink);
+            padding: 0.75rem 1.5rem;
+            /* Vertical, Horizontal padding */
+            font-size: 1rem;
+            cursor: pointer;
+            /* More human than human */
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+            width: 100%;
+            max-width: var(--button-max-width);
+            text-align: left;
+            /* Text aligned left */
+        }
+
+        .retro-button:hover {
+            background-color: var(--color-hover-bg-tint);
+            color: var(--color-hover-text);
+            border-left-color: var(--color-hover-border);
+        }
+
+        /*
+         * ==============================================
+         * Responsive: Mobile Nexus
+         * Styles for smaller viewports (< 768px)
+         * ==============================================
+         */
+        @media (max-width: 768px) {
+            .magazine-page {
+                flex-direction: column;
+                /* Stack columns */
+                height: auto;
+                max-height: none;
+                padding: var(--mobile-padding);
+                /* Add padding back */
+            }
+
+            .image-container {
+                position: relative;
+                /* Reset positioning */
+                width: 100%;
+                /* Full width */
+                height: auto;
+                /* Auto height */
+                margin-bottom: 1.5rem;
+                right: auto;
+                bottom: auto;
+                opacity: 1;
+                filter: none;
+                /* Reset overrides */
+            }
+
+            .image-container img {
+                border-radius: 0.5rem;
+                /* Slightly rounded corners on mobile */
+            }
+
+            .text-container {
+                text-align: center;
+                /* Center text content on mobile */
+                width: 100%;
+                /* Full width */
+                padding: 0 var(--mobile-padding);
+                /* Adjust padding */
+                justify-content: flex-start;
+                /* Align content to top */
+            }
+
+            .button-container {
+                align-items: flex-start;
+                /* Keep buttons left-aligned */
+                gap: var(--mobile-gap);
+                /* Adjust gap */
+            }
+
+            /* Adjust typography for smaller screens */
+            .headline {
+                font-size: 2rem;
+            }
+
+            .sub-headline {
+                font-size: 1rem;
+            }
+
+            .vaporwave-separator {
+                margin: 1.5rem 0;
+                font-size: 0.9rem;
+            }
+
+            /* Adjust button padding/font for smaller screens */
+            .retro-button {
+                padding: 0.5rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="magazine-page">
+
+        <div class="text-container">
+            <div class="headline">OPERATING SMOOTHLY.</div>
+            <div class="sub-headline">Architecting Reality.</div>
+            <div class="contact-info">
+                Ａａｍｉｒ　Ｓｙｅｄ<br>
+                Ｓｏｆｔｗａｒｅ　Ｅｎｇｉｎｅｅｒ<br>
+            </div>
+
+            <div class="button-container">
+                <a href="https://github.com/asyed94" class="retro-button">[ View Projects ]</a>
+                <a href="mailto:email@example.com" class="retro-button">[ Initiate Contact ]</a>
+                <a href="/aamir-syed-resume-latest.pdf" class="retro-button">[ Download Resume ]</a>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="asyed94.png" alt="Professional Programmer - Enhance!"
+                onerror="this.onerror=null; this.src='https://placehold.co/500x600/2d3748/e2e8f0?text=Image+Not+Available';">
+        </div>
+    </div>
+</body>
+
+</html>
